@@ -9,12 +9,12 @@ repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = 'C:/Users/Lokesh/OneDrive/Desktop/Hero Vired/Sessions/AutomateDeployment'
+local_repo_path = 'L:/Udemy/AutomateDeployment'
 nginx_path = 'C:/nginx-1.24.0/AutoDeploy'
 file_to_copy = 'index.html'
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
@@ -24,6 +24,7 @@ headers = {
 
 # API URL to get latest commit
 url = f'https://api.github.com/repos/{owner}/{repo}/branches/{branch}'
+print(url)
 response = requests.get(url, headers=headers)
 
 if response.status_code == 200:
