@@ -9,12 +9,12 @@ repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = 'L:/Udemy/AutomateDeployment'
-nginx_path = 'C:/nginx-1.24.0/AutoDeploy'
+local_repo_path = 'L:\\Udemy\\AutomateDeployment'
+nginx_path = 'C:\\nginx-1.24.0\\AutoDeploy'
 file_to_copy = 'index.html'
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
