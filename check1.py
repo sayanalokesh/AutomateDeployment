@@ -9,7 +9,7 @@ repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = "L:\Udemy\AutomateDeployment"
+local_repo_path = "C:\Users\Lokesh\OneDrive\Desktop\Hero Vired\Sessions\AutomateDeployment"
 nginx_path = "C:\nginx-1.24.0\AutoDeploy"
 file_to_copy = "index.html"
 
