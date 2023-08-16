@@ -4,17 +4,17 @@ import shutil
 from git import Repo
 
 # GitHub repository details
-owner = 'AdarshIITDH'
-repo = 'CICD-project-with-bash'
+owner = 'sayanalokesh'
+repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = '/home/jarvis/CICD-project-with-bash/'
-nginx_path = '/var/www/awesomeweb/'
+local_repo_path = 'C:/Users/Lokesh/OneDrive/Desktop/Hero Vired/Sessions/AutomateDeployment'
+nginx_path = 'C:/nginx-1.24.0/AutoDeploy'
 file_to_copy = 'index.html'
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
@@ -33,7 +33,7 @@ else:
     latest_commit_hash = None
 
 # Check if there's a new commit
-previous_commit_hash_file = '84d3df4a5fa1e609dfa5a7775522fb427fb4d82'
+previous_commit_hash_file = 'c56e5abf86ba33927b32496b23e16ac46a71a186'
 if os.path.exists(previous_commit_hash_file):
     with open(previous_commit_hash_file, 'r') as file:
         previous_commit_hash = file.read().strip()
