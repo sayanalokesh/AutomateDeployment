@@ -9,9 +9,9 @@ repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = 'L:\\Udemy\\AutomateDeployment'
-nginx_path = 'C:\\nginx-1.24.0\\AutoDeploy'
-file_to_copy = 'index.html'
+local_repo_path = "L:\Udemy\AutomateDeployment"
+nginx_path = "C:\nginx-1.24.0\AutoDeploy"
+file_to_copy = "index.html"
 
 # # GitHub Personal Access Token
 access_token = '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'
