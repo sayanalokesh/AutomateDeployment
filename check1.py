@@ -14,7 +14,7 @@ nginx_path = 'C:\\nginx-1.24.0\\AutoDeploy'
 file_to_copy = 'index.html'
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
