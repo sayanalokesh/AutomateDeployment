@@ -14,7 +14,7 @@ nginx_path = 'C:\\nginx-1.24.0\\AutoDeploy'
 file_to_copy = 'index.html'
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
@@ -66,4 +66,3 @@ if latest_commit_hash and latest_commit_hash != previous_commit_hash:
         file.write(latest_commit_hash)
 else:
     print("No new commits.")
-
