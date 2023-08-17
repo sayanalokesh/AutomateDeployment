@@ -3,6 +3,7 @@ import requests
 import shutil
 from git import Repo
 from subprocess import run
+import logging
 from config import access_token, owner, repo_name, local_repo_path, nginx_path, file_to_copy, branch
 
 
