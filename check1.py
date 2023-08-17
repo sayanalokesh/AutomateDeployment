@@ -9,12 +9,12 @@ repo = 'AutomateDeployment'
 branch = 'dev'
 
 # Paths
-local_repo_path = "C:\Users\Lokesh\OneDrive\Desktop\Hero Vired\Sessions\AutomateDeployment"
-nginx_path = "C:\nginx-1.24.0\AutoDeploy"
+local_repo_path = r"C:\Users\Lokesh\OneDrive\Desktop\Hero Vired\Sessions\AutomateDeployment"
+nginx_path = r"C:\nginx-1.24.0\autodeploy"
 file_to_copy = "index.html"
 
 # # GitHub Personal Access Token
-access_token = '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'
+access_token = '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'
 
 
 # API request headers
