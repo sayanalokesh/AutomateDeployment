@@ -1,7 +1,7 @@
 # config.py
 
 # GitHub repository details
-access_token = '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'
+access_token = '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'
 owner = 'sayanalokesh'
 repo_name = 'AutomateDeployment'
 branch = 'dev'

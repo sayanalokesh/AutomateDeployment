@@ -61,45 +61,20 @@ if latest_commit_hash and latest_commit_hash != previous_commit_hash:
             shutil.copy(src_path, dest_path)
             print("Copied index.html to Nginx folder.")
 
-#     def main():
-#     # Fetch updates from remote
-#         subprocess.run(['git', 'fetch'], cwd=REPO_PATH)
+    # Create a merge request
+    if branch == 'dev':
+        url = f'https://api.github.com/repos/{owner}/{repo_name}/pulls'
+        data = {
+            "title": "Merge dev to main",
+            "head": "dev",
+            "base": "main"
+        }
+        response = requests.post(url, headers=headers, json=data)
+        if response.status_code == 201:
+            print("Merge request created successfully.")
+        else:
+            print("Error creating merge request:", response.text)
 
-#     # Checkout the test branch
-#         subprocess.run(['git', 'checkout', TEST_BRANCH], cwd=REPO_PATH)
-
-#     # Pull the latest changes from the test branch
-#         subprocess.run(['git', 'pull'], cwd=REPO_PATH)
-
-#     # Merge changes from the dev branch into the test branch
-#         merge_command = ['git', 'merge', DEV_BRANCH]
-#         merge_result = subprocess.run(merge_command, cwd=REPO_PATH)
-
-#     if merge_result.returncode == 0:
-#         print('Merge successful.')
-#     else:
-#         print('Merge failed.')
-
-#         # # Automatically push to the prod branch
-#         # repo.git.checkout('test')
-#         # repo.git.add(file_to_copy)
-#         # repo.git.commit('-m', 'Automatic update from dev branch')
-#         # repo.remotes.origin.push('test')
-#         # print("Code pushed to test branch.")
-
-#         # # Automatically start Nginx server
-#         # run(['nginx', '-t'])  # Test the nginx configuration
-#         # run(['nginx'])       # Start the nginx server
-#         # print("Nginx server started.")
-
-# else:
-#     print("No changes in calc.py.")
-
-#     # Update the previous commit hash
-#     with open(previous_commit_hash_file, 'w') as file:
-#         file.write(latest_commit_hash)
-# else:
-#     print("No new commits.")
-
-# if __name__ == '__main__':
-#     main()
+    # Update the previous commit hash
+    with open(previous_commit_hash_file, 'w') as file:
+        file.write(latest_commit_hash)
