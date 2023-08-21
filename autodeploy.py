@@ -53,31 +53,28 @@ if latest_commit_hash and latest_commit_hash != previous_commit_hash:
     else:
         repo = Repo.clone_from(f'https://github.com/{owner}/{repo_name}.git', local_repo_path)
 
-    # Check if calc.py has changed
+    # Check if index.html has changed
     if repo.git.diff(previous_commit_hash, latest_commit_hash, '--', file_to_copy):
         src_path = os.path.join(local_repo_path, file_to_copy)
         dest_path = os.path.join(nginx_path, file_to_copy)
         if os.path.exists(src_path):
             shutil.copy(src_path, dest_path)
-            print("Copied calc.py to Nginx folder.")
+            print("Copied index.html to Nginx folder.")
 
-        # Automatically push to the prod branch
-        repo.git.checkout('test')
-        repo.git.add(file_to_copy)
-        repo.git.commit('-m', 'Automatic update from dev branch')
-        repo.remotes.origin.push('test')
-        print("Code pushed to test branch.")
-
-        # # Automatically start Nginx server
-        # run(['nginx', '-t'])  # Test the nginx configuration
-        # run(['nginx'])       # Start the nginx server
-        # print("Nginx server started.")
-
-    else:
-        print("No changes in calc.py.")
+    # Create a merge request
+    if branch == 'dev':
+        url = f'https://api.github.com/repos/{owner}/{repo_name}/pulls'
+        data = {
+            "title": "Merge dev to main",
+            "head": "dev",
+            "base": "main"
+        }
+        response = requests.post(url, headers=headers, json=data)
+        if response.status_code == 201:
+            print("Merge request created successfully.")
+        else:
+            print("Error creating merge request:", response.text)
 
     # Update the previous commit hash
     with open(previous_commit_hash_file, 'w') as file:
         file.write(latest_commit_hash)
-else:
-    print("No new commits.")
