@@ -53,31 +53,53 @@ if latest_commit_hash and latest_commit_hash != previous_commit_hash:
     else:
         repo = Repo.clone_from(f'https://github.com/{owner}/{repo_name}.git', local_repo_path)
 
-    # Check if calc.py has changed
+    # Check if index.html has changed
     if repo.git.diff(previous_commit_hash, latest_commit_hash, '--', file_to_copy):
         src_path = os.path.join(local_repo_path, file_to_copy)
         dest_path = os.path.join(nginx_path, file_to_copy)
         if os.path.exists(src_path):
             shutil.copy(src_path, dest_path)
-            print("Copied calc.py to Nginx folder.")
+            print("Copied index.html to Nginx folder.")
 
-        # Automatically push to the prod branch
-        repo.git.checkout('test')
-        repo.git.add(file_to_copy)
-        repo.git.commit('-m', 'Automatic update from dev branch')
-        repo.remotes.origin.push('test')
-        print("Code pushed to test branch.")
+#     def main():
+#     # Fetch updates from remote
+#         subprocess.run(['git', 'fetch'], cwd=REPO_PATH)
 
-        # # Automatically start Nginx server
-        # run(['nginx', '-t'])  # Test the nginx configuration
-        # run(['nginx'])       # Start the nginx server
-        # print("Nginx server started.")
+#     # Checkout the test branch
+#         subprocess.run(['git', 'checkout', TEST_BRANCH], cwd=REPO_PATH)
 
-    else:
-        print("No changes in calc.py.")
+#     # Pull the latest changes from the test branch
+#         subprocess.run(['git', 'pull'], cwd=REPO_PATH)
 
-    # Update the previous commit hash
-    with open(previous_commit_hash_file, 'w') as file:
-        file.write(latest_commit_hash)
-else:
-    print("No new commits.")
+#     # Merge changes from the dev branch into the test branch
+#         merge_command = ['git', 'merge', DEV_BRANCH]
+#         merge_result = subprocess.run(merge_command, cwd=REPO_PATH)
+
+#     if merge_result.returncode == 0:
+#         print('Merge successful.')
+#     else:
+#         print('Merge failed.')
+
+#         # # Automatically push to the prod branch
+#         # repo.git.checkout('test')
+#         # repo.git.add(file_to_copy)
+#         # repo.git.commit('-m', 'Automatic update from dev branch')
+#         # repo.remotes.origin.push('test')
+#         # print("Code pushed to test branch.")
+
+#         # # Automatically start Nginx server
+#         # run(['nginx', '-t'])  # Test the nginx configuration
+#         # run(['nginx'])       # Start the nginx server
+#         # print("Nginx server started.")
+
+# else:
+#     print("No changes in calc.py.")
+
+#     # Update the previous commit hash
+#     with open(previous_commit_hash_file, 'w') as file:
+#         file.write(latest_commit_hash)
+# else:
+#     print("No new commits.")
+
+# if __name__ == '__main__':
+#     main()
